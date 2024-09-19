@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EducaTesting.Application\EducaTesting.Application.csproj" />
+  </ItemGroup>
+
 </Project>
