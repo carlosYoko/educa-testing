@@ -1,32 +1,42 @@
+using EducaTesting.Application.Courses;
+using EducaTesting.Persistence;
+using FluentValidation.AspNetCore;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<EducaTestingDbContext>(op =>
+{
+    op.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+builder.Services.AddMediatR(typeof(GetCourseQuery.GetCourseQueryHandler).Assembly);
+
+builder.Services.AddControllers().AddFluentValidation(c => c.RegisterValidatorsFromAssemblyContaining<CreateCourseCommand>());
+
+builder.Services.AddAutoMapper(typeof(GetCourseQuery.GetCourseQueryHandler));
+
+builder.Services.AddCors(o => o.AddPolicy("corsApp", builder =>
+{
+    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+}));
+
+builder.Services.AddControllers();
 
 var app = builder.Build();
+app.UseCors("corsApp");
 
 // Configure the HTTP request pipeline.
-
-var summaries = new[]
+if (builder.Environment.IsDevelopment())
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+    app.UseDeveloperExceptionPage();
+}
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-});
+app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();
 
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
