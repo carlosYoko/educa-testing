@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EducaTesting.Persistence
 {
-    internal class EducaTestingDbContext : DbContext
+    public class EducaTestingDbContext : DbContext
     {
         public EducaTestingDbContext(DbContextOptions<EducaTestingDbContext> options) : base(options)
         { }
