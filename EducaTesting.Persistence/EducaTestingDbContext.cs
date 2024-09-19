@@ -5,10 +5,21 @@ namespace EducaTesting.Persistence
 {
     public class EducaTestingDbContext : DbContext
     {
+        public EducaTestingDbContext()
+        { }
+
         public EducaTestingDbContext(DbContextOptions<EducaTestingDbContext> options) : base(options)
         { }
 
         public DbSet<Course> Courses { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=EducaTesting;Trusted_Connection=True;");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
