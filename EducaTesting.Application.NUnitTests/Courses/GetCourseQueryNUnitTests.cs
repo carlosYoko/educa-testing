@@ -1,4 +1,6 @@
 ﻿using AutoFixture;
+using AutoMapper;
+using EducaTesting.Application.Helper;
 using EducaTesting.Domain;
 using EducaTesting.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -26,10 +28,19 @@ namespace EducaTesting.Application.Courses
                 .UseInMemoryDatabase(databaseName: $"EducaTestingDbContext-{Guid.NewGuid()}")
                 .Options;
 
-            var educaTestingDbContext = new EducaTestingDbContext(options);
-            educaTestingDbContext.AddRange(courseRecords);
-            educaTestingDbContext.SaveChanges();
+            var educaTestingDbContextFake = new EducaTestingDbContext(options);
+            educaTestingDbContextFake.AddRange(courseRecords);
+            educaTestingDbContextFake.SaveChanges();
 
+            var mapConfig = new MapperConfiguration(c =>
+            {
+                c.AddProfile(new MappingTest());
+            }
+            );
+
+            var mapperFake = mapConfig.CreateMapper();
+
+            handlerAllCourses = new GetCourseQuery.GetCourseQueryHandler(educaTestingDbContextFake, mapperFake);
         }
 
 
