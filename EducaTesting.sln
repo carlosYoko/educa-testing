@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35201.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EducaTesting.Domain", "EducaTesting.Domain\EducaTesting.Domain.csproj", "{EAE6C0F5-AB99-476A-8AFB-11D8CD23765F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EducaTesting.Domain", "EducaTesting.Domain\EducaTesting.Domain.csproj", "{EAE6C0F5-AB99-476A-8AFB-11D8CD23765F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EducaTesting.Persistence", "EducaTesting.Persistence\EducaTesting.Persistence.csproj", "{70017310-906D-4352-BD24-D37E9F940FBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EducaTesting.Persistence", "EducaTesting.Persistence\EducaTesting.Persistence.csproj", "{70017310-906D-4352-BD24-D37E9F940FBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EducaTesting.Application", "EducaTesting.Application\EducaTesting.Application.csproj", "{60285C92-98E8-486B-9A35-ADFCDBD7FC94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EducaTesting.Application", "EducaTesting.Application\EducaTesting.Application.csproj", "{60285C92-98E8-486B-9A35-ADFCDBD7FC94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EducaTesting.API", "EducaTesting.API\EducaTesting.API.csproj", "{FCB27169-BA00-453C-BA96-04B8C85444CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EducaTesting.API", "EducaTesting.API\EducaTesting.API.csproj", "{FCB27169-BA00-453C-BA96-04B8C85444CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EducaTesting.Application.NUnitTests", "EducaTesting.Application.NUnitTests\EducaTesting.Application.NUnitTests.csproj", "{1C21E2F1-0360-4D9E-8909-CB8BA1272447}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{FCB27169-BA00-453C-BA96-04B8C85444CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCB27169-BA00-453C-BA96-04B8C85444CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCB27169-BA00-453C-BA96-04B8C85444CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C21E2F1-0360-4D9E-8909-CB8BA1272447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C21E2F1-0360-4D9E-8909-CB8BA1272447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C21E2F1-0360-4D9E-8909-CB8BA1272447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C21E2F1-0360-4D9E-8909-CB8BA1272447}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
