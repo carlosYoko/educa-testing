@@ -11,7 +11,7 @@ namespace EducaTesting.Application.Courses
     [TestFixture]
     public class GetCourseQueryNUnitTests
     {
-        private GetCourseQuery.GetCourseQueryHandler handlerAllCourses;
+        private GetCourseQuery.GetCourseQueryHandler? handlerAllCourses;
 
         [SetUp]
         public void SetUp()
@@ -45,13 +45,16 @@ namespace EducaTesting.Application.Courses
 
 
         [Test]
-        public void GetCourseQueryHandler_QueryCourses_ReturnsTrue()
+        public async Task GetCourseQueryHandler_QueryCourses_ReturnsTrue()
         {
             // Act
+            var request = new GetCourseQuery.GetCourseQueryRequest();
 
             // Arrange
+            var result = await handlerAllCourses!.Handle(request, new System.Threading.CancellationToken());
 
             // Assert
+            Assert.That(result, Is.Not.Null);
         }
     }
 }
