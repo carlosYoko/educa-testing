@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using EducaTesting.Domain;
+﻿using EducaTesting.Domain;
 using EducaTesting.Persistence;
 using FluentValidation;
 using MediatR;
@@ -29,7 +28,7 @@ namespace EducaTesting.Application.Courses
         {
             private readonly EducaTestingDbContext _context;
 
-            public CreateCourseCommandHandler(EducaTestingDbContext context, IMapper mapper)
+            public CreateCourseCommandHandler(EducaTestingDbContext context)
             {
                 _context = context;
             }
